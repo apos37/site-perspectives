@@ -5,7 +5,6 @@
  * Description:         Build your site structure once, then use it everywhere: a drag and drop site tree, a visitor sitemap shortcode, and a folder-style admin menu.
  * Version:             1.0.3
  * Requires at least:   6.0
- * Tested up to:        7.1
  * Requires PHP:        8.0
  * Author:              PluginRx
  * Author URI:          https://pluginrx.com/
