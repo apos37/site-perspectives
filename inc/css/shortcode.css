@@ -1,0 +1,301 @@
+.siteperspectives-sc {
+    --siteperspectives-card-bg: #fff;
+    --siteperspectives-border: #e2e5ea;
+    --siteperspectives-title: #1d2327;
+    --siteperspectives-font: #50575e;
+    --siteperspectives-icon: #2271b1;
+    --siteperspectives-link: #2271b1;
+    --siteperspectives-link-hover: #135e96;
+    --siteperspectives-accent: #2271b1;
+    --siteperspectives-radius: 8px;
+    --siteperspectives-gap: 8px;
+    --siteperspectives-pad: 10px 14px;
+    --tl-trunk: var( --siteperspectives-title );
+    background: transparent;
+    color: var( --siteperspectives-font );
+    font-size: 15px;
+    line-height: 1.45;
+    box-sizing: border-box;
+}
+
+.siteperspectives-sc *,
+.siteperspectives-sc *::before,
+.siteperspectives-sc *::after {
+    box-sizing: inherit;
+}
+
+.siteperspectives-sc .siteperspectives-home {
+    display: none;
+}
+
+.siteperspectives-sc.siteperspectives-layout-horizontal {
+    display: grid;
+    grid-template-columns: minmax( min-content, 1fr );
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.siteperspectives-sc.siteperspectives-layout-horizontal > .siteperspectives-root {
+    min-width: min-content;
+}
+
+.siteperspectives-sc .siteperspectives-list.siteperspectives-cards-list {
+    display: none;
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list {
+    display: grid;
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards > :not( .siteperspectives-cards-list ) {
+    display: none;
+}
+
+.siteperspectives-sc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.siteperspectives-sc .siteperspectives-node {
+    position: relative;
+}
+
+.siteperspectives-sc .siteperspectives-list {
+    display: flex;
+    flex-direction: column;
+    gap: var( --siteperspectives-gap );
+}
+
+.siteperspectives-sc .siteperspectives-children {
+    margin-top: var( --siteperspectives-gap );
+    margin-left: 22px;
+    padding-left: 16px;
+    border-left: 2px solid var( --siteperspectives-node-color, var( --siteperspectives-accent ) );
+}
+
+.siteperspectives-sc .siteperspectives-children > .siteperspectives-node::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 20px;
+    width: 18px;
+    border-top: 2px solid var( --siteperspectives-node-color, var( --siteperspectives-accent ) );
+}
+
+.siteperspectives-sc .siteperspectives-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: var( --siteperspectives-pad );
+    background: var( --siteperspectives-card-bg );
+    border: 1px solid var( --siteperspectives-border );
+    border-left: 4px solid var( --siteperspectives-node-color, var( --siteperspectives-accent ) );
+    border-radius: var( --siteperspectives-radius );
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.siteperspectives-sc .siteperspectives-card:has( a.siteperspectives-title ) {
+    cursor: pointer;
+}
+
+.siteperspectives-sc .siteperspectives-card:hover {
+    background: color-mix( in srgb, var( --siteperspectives-card-bg ) 88%, var( --siteperspectives-node-color, var( --siteperspectives-accent ) ) );
+    border-color: var( --siteperspectives-node-color, var( --siteperspectives-accent ) );
+    box-shadow: 0 2px 8px rgba( 0, 0, 0, 0.12 );
+}
+
+.siteperspectives-sc .siteperspectives-node-icon {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 1;
+    color: var( --siteperspectives-icon, var( --siteperspectives-accent ) );
+}
+
+.siteperspectives-sc.siteperspectives-use-node-colors .siteperspectives-node-icon {
+    color: var( --siteperspectives-node-color, var( --siteperspectives-accent ) );
+}
+
+.siteperspectives-sc.siteperspectives-no-icons .siteperspectives-node-icon {
+    display: none;
+}
+
+.siteperspectives-sc .siteperspectives-card-text {
+    min-width: 0;
+    flex: 1;
+}
+
+.siteperspectives-sc .siteperspectives-title {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1.05em;
+    color: var( --siteperspectives-title );
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.siteperspectives-sc a.siteperspectives-title {
+    color: var( --siteperspectives-link );
+}
+
+.siteperspectives-sc a,
+.siteperspectives-sc a:hover,
+.siteperspectives-sc a:focus,
+.siteperspectives-sc a:active,
+.siteperspectives-sc a:visited {
+    text-decoration: none !important;
+}
+
+.siteperspectives-sc a.siteperspectives-title::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var( --siteperspectives-radius );
+}
+
+.siteperspectives-sc a.siteperspectives-title:hover,
+.siteperspectives-sc a.siteperspectives-title:focus {
+    color: var( --siteperspectives-link-hover );
+}
+
+.siteperspectives-sc a.siteperspectives-title:focus-visible::after {
+    outline: 2px solid var( --siteperspectives-node-color, var( --siteperspectives-accent ) );
+    outline-offset: 2px;
+}
+
+.siteperspectives-sc .siteperspectives-data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-top: 3px;
+    font-size: 0.85em;
+}
+
+.siteperspectives-sc .siteperspectives-datum {
+    color: var( --siteperspectives-font );
+    overflow-wrap: anywhere;
+}
+
+.siteperspectives-sc .siteperspectives-datum .siteperspectives-datum-label {
+    font-weight: 600;
+}
+
+.siteperspectives-sc .siteperspectives-datum-path {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    opacity: 0.85;
+}
+
+.siteperspectives-sc .siteperspectives-datum-post_type {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    font-size: 0.8em;
+    color: var( --siteperspectives-accent );
+}
+
+.siteperspectives-sc.siteperspectives-hide-path .siteperspectives-datum-path,
+.siteperspectives-sc.siteperspectives-hide-post_type .siteperspectives-datum-post_type,
+.siteperspectives-sc.siteperspectives-hide-categories .siteperspectives-datum-categories,
+.siteperspectives-sc.siteperspectives-hide-tags .siteperspectives-datum-tags,
+.siteperspectives-sc.siteperspectives-hide-terms .siteperspectives-datum-terms,
+.siteperspectives-sc.siteperspectives-hide-author .siteperspectives-datum-author,
+.siteperspectives-sc.siteperspectives-hide-published .siteperspectives-datum-published,
+.siteperspectives-sc.siteperspectives-hide-modified .siteperspectives-datum-modified {
+    display: none;
+}
+
+.siteperspectives-sc .siteperspectives-sc-utility {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var( --siteperspectives-border );
+}
+
+.siteperspectives-sc .siteperspectives-sc-heading {
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    color: var( --siteperspectives-title );
+}
+
+.siteperspectives-sc.siteperspectives-density-compact {
+    --siteperspectives-gap: 4px;
+    --siteperspectives-pad: 6px 10px;
+    font-size: 14px;
+}
+
+.siteperspectives-sc.siteperspectives-density-spacious {
+    --siteperspectives-gap: 14px;
+    --siteperspectives-pad: 16px 20px;
+    font-size: 16px;
+}
+
+/* Cards: every item as a portrait card, flat and alphabetical, with no connector bars */
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list {
+    grid-template-columns: repeat( auto-fill, minmax( min( 250px, 100% ), 250px ) );
+    justify-content: start;
+    gap: calc( var( --siteperspectives-gap ) * 2 );
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list > .siteperspectives-node {
+    display: flex;
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list > .siteperspectives-node::before {
+    content: none;
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list .siteperspectives-card {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+    min-height: 300px;
+    padding: 28px 20px;
+    text-align: center;
+    border-left: 1px solid var( --siteperspectives-border );
+    border-top: 4px solid var( --siteperspectives-node-color, var( --siteperspectives-accent ) );
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list .siteperspectives-node-icon {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    font-size: 64px;
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list .siteperspectives-card-text {
+    flex: none;
+    width: 100%;
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list .siteperspectives-title {
+    font-size: 1.3em;
+    line-height: 1.3;
+}
+
+.siteperspectives-sc.siteperspectives-layout-cards .siteperspectives-cards-list .siteperspectives-data {
+    justify-content: center;
+}
+
+@media ( max-width: 600px ) {
+    .siteperspectives-sc .siteperspectives-children {
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+
+    .siteperspectives-sc .siteperspectives-children > .siteperspectives-node::before {
+        left: -12px;
+        width: 12px;
+    }
+}
+
+/* Only the "Same as Frontend Tab" theme uses each item's own color; every other theme uses one accent for all cards. */
+
+.siteperspectives-sc:not( .siteperspectives-use-node-colors ) .siteperspectives-node {
+    --siteperspectives-node-color: var( --siteperspectives-accent ) !important;
+    --siteperspectives-node-text: var( --tl-accent-text, #fff ) !important;
+}

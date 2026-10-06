@@ -1,0 +1,846 @@
+/* SITE PERSPECTIVES: Frontend and Backend tree tabs */
+
+.siteperspectives-wrap {
+    --siteperspectives-line: #d0d5dd;
+    --tl-trunk: var( --siteperspectives-color-header-bg );
+}
+
+.siteperspectives-home {
+    display: none;
+}
+
+/* Options panel */
+
+.siteperspectives-options {
+    background: #fff;
+    border-radius: var( --siteperspectives-radius );
+    box-shadow: 0px 1px 2px rgba( 16, 24, 40, .1 );
+    margin-bottom: 32px;
+}
+
+.siteperspectives-options summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d2939;
+    list-style: none;
+}
+
+.siteperspectives-options summary::-webkit-details-marker {
+    display: none;
+}
+
+.siteperspectives-options summary .siteperspectives-options-chevron {
+    margin-left: auto;
+    transition: transform .2s ease;
+}
+
+.siteperspectives-options[open] summary .siteperspectives-options-chevron {
+    transform: rotate( 180deg );
+}
+
+.siteperspectives-options[open] summary {
+    border-bottom: 1px solid #eaecf0;
+}
+
+.siteperspectives-options-body {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax( 260px, 1fr ) );
+    gap: 24px;
+    padding: 20px;
+}
+
+.siteperspectives-options-col h3 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #344054;
+}
+
+.siteperspectives-options-col .siteperspectives-checkboxes {
+    grid-template-columns: repeat( 2, minmax( 0, 1fr ) );
+}
+
+/* Toolbar */
+
+.siteperspectives-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.siteperspectives-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.siteperspectives-search {
+    position: relative;
+    flex: 0 1 260px;
+    min-width: 180px;
+}
+
+.siteperspectives-search .dashicons {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY( -50% );
+    color: #98a2b3;
+}
+
+.siteperspectives-search input {
+    width: 100%;
+    padding: 6px 10px 6px 32px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    font-size: 13px;
+    height: 34px;
+    box-shadow: none;
+}
+
+/* Layout and edit mode panel */
+
+.siteperspectives-layout {
+    display: grid;
+    grid-template-columns: minmax( 0, 1fr );
+    gap: 24px;
+    align-items: start;
+}
+
+.siteperspectives-editing .siteperspectives-layout {
+    grid-template-columns: 320px minmax( 0, 1fr );
+}
+
+.siteperspectives-add-panel[hidden] {
+    display: none;
+}
+
+.siteperspectives-add-panel {
+    position: sticky;
+    top: 48px;
+    max-height: calc( 100vh - 80px );
+    overflow-y: auto;
+}
+
+@media ( max-width: 900px ) {
+    .siteperspectives-editing .siteperspectives-layout {
+        grid-template-columns: minmax( 0, 1fr );
+    }
+
+    .siteperspectives-add-panel {
+        position: static;
+        max-height: none;
+    }
+}
+
+.siteperspectives-add-parent {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eaecf0;
+}
+
+.siteperspectives-add-parent label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.siteperspectives-add-parent select {
+    width: 100%;
+    max-width: none;
+    height: 34px;
+}
+
+.siteperspectives-accordion .siteperspectives-acc {
+    border-bottom: 1px solid #eaecf0;
+}
+
+.siteperspectives-accordion .siteperspectives-acc:last-child {
+    border-bottom: 0;
+}
+
+.siteperspectives-acc summary {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 13px;
+    color: #1d2939;
+}
+
+.siteperspectives-acc-body {
+    padding: 0 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.siteperspectives-acc-body input[type="text"],
+.siteperspectives-acc-body input[type="search"] {
+    width: 100%;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.siteperspectives-acc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid #eaecf0;
+    border-radius: 6px;
+}
+
+.siteperspectives-acc-list:empty {
+    display: none;
+}
+
+.siteperspectives-acc-list li {
+    margin: 0;
+    padding: 6px 10px;
+    border-bottom: 1px solid #f2f4f7;
+    font-size: 13px;
+}
+
+.siteperspectives-acc-list li:last-child {
+    border-bottom: 0;
+}
+
+.siteperspectives-acc-list label {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.siteperspectives-acc-list .siteperspectives-status {
+    color: #667085;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.siteperspectives-acc-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.siteperspectives-acc-msg {
+    font-size: 12px;
+    color: #667085;
+    margin: 0;
+}
+
+/* Tree lists */
+
+.siteperspectives-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.siteperspectives-root {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.siteperspectives-children {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0 0 26px;
+    padding-left: 18px;
+    border-left: 2px dashed var( --siteperspectives-line );
+}
+
+.siteperspectives-children:empty {
+    display: none;
+}
+
+.siteperspectives-editing .siteperspectives-children:empty {
+    display: flex;
+    min-height: 14px;
+    margin-top: 4px;
+}
+
+.siteperspectives-editing .siteperspectives-root:empty {
+    min-height: 56px;
+    border: 2px dashed var( --siteperspectives-line );
+    border-radius: 8px;
+}
+
+.siteperspectives-node {
+    margin: 0;
+    position: relative;
+}
+
+.siteperspectives-children > .siteperspectives-node::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 24px;
+    width: 18px;
+    border-top: 2px dashed var( --siteperspectives-line );
+}
+
+/* Cards */
+
+.siteperspectives-card {
+    background: #fff;
+    border: 1px solid #eaecf0;
+    border-left: 4px solid var( --siteperspectives-node-color, var( --siteperspectives-color-accent ) );
+    border-radius: var( --siteperspectives-radius );
+    box-shadow: 0px 1px 2px rgba( 16, 24, 40, .08 );
+}
+
+.siteperspectives-card-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+}
+
+.siteperspectives-handle {
+    display: none;
+    cursor: grab;
+    color: #98a2b3;
+}
+
+.siteperspectives-editing .siteperspectives-handle {
+    display: inline-block;
+}
+
+.siteperspectives-node-icon {
+    color: var( --siteperspectives-node-color, var( --siteperspectives-color-accent ) );
+}
+
+.siteperspectives-card-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.siteperspectives-title {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d2939;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+a.siteperspectives-title:hover,
+button.siteperspectives-title:hover {
+    color: var( --siteperspectives-color-accent );
+    text-decoration: underline;
+}
+
+span.siteperspectives-title {
+    cursor: default;
+}
+
+.siteperspectives-type-parent > .siteperspectives-card > .siteperspectives-card-main .siteperspectives-title {
+    font-size: 15px;
+}
+
+.siteperspectives-collapsed-data {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 14px;
+    font-size: 12px;
+    color: #667085;
+    margin-top: 2px;
+}
+
+.siteperspectives-collapsed-data:empty {
+    display: none;
+}
+
+.siteperspectives-datum-path,
+.siteperspectives-datum-slug,
+.siteperspectives-datum-url,
+.siteperspectives-datum-capability {
+    font-family: Consolas, Monaco, monospace;
+}
+
+.siteperspectives-datum-path {
+    color: #475467;
+}
+
+.siteperspectives-inline-url {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.siteperspectives-inline-url[hidden] {
+    display: none;
+}
+
+.siteperspectives-inline-url-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 12px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.siteperspectives-toggle {
+    background: transparent;
+    border: 0;
+    padding: 4px;
+    cursor: pointer;
+    color: #667085;
+    border-radius: 6px;
+    line-height: 1;
+}
+
+.siteperspectives-toggle:hover {
+    background: #f2f4f7;
+}
+
+.siteperspectives-toggle .dashicons {
+    transition: transform .2s ease;
+}
+
+.siteperspectives-toggle[aria-expanded="true"] .dashicons {
+    transform: rotate( 180deg );
+}
+
+.siteperspectives-expanded {
+    border-top: 1px solid #eaecf0;
+    padding: 10px 14px 14px;
+}
+
+.siteperspectives-expanded[hidden] {
+    display: none;
+}
+
+.siteperspectives-expanded-data:empty {
+    display: none;
+}
+
+.siteperspectives-datum-row {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    padding: 3px 0;
+}
+
+.siteperspectives-datum-label {
+    flex: 0 0 120px;
+    color: #667085;
+}
+
+.siteperspectives-datum-value {
+    color: #1d2939;
+    word-break: break-word;
+}
+
+.siteperspectives-edit-fields {
+    display: none;
+}
+
+.siteperspectives-editing .siteperspectives-edit-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #eaecf0;
+}
+
+.siteperspectives-editing .siteperspectives-expanded-data:empty + .siteperspectives-edit-fields {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.siteperspectives-edit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    color: #475467;
+}
+
+.siteperspectives-edit-field input[type="text"] {
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    padding: 5px 9px;
+    font-size: 13px;
+    min-width: 180px;
+}
+
+.siteperspectives-edit-field input[type="color"] {
+    width: 44px;
+    height: 30px;
+    padding: 2px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.siteperspectives-edit-check {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.siteperspectives-add-panel .siteperspectives-edit-field input[type="text"] {
+    width: 100%;
+    min-width: 0;
+}
+
+.siteperspectives-add-panel .siteperspectives-edit-field {
+    width: 100%;
+}
+
+.siteperspectives-missing > .siteperspectives-card {
+    border-left-color: #d63638;
+    background: #fcf0f1;
+}
+
+.siteperspectives-hidden {
+    display: none;
+}
+
+.siteperspectives-editing .siteperspectives-hidden {
+    display: block;
+    opacity: .55;
+}
+
+.siteperspectives-filter-hide {
+    display: none !important;
+}
+
+.siteperspectives-placeholder {
+    list-style: none;
+    border: 2px dashed var( --siteperspectives-color-accent );
+    border-radius: var( --siteperspectives-radius );
+    background: rgba( 7, 131, 190, .06 );
+    min-height: 44px;
+    margin: 0;
+}
+
+.siteperspectives-node.ui-sortable-helper > .siteperspectives-card {
+    box-shadow: 0 8px 24px rgba( 16, 24, 40, .2 );
+}
+
+.siteperspectives-flash > .siteperspectives-card {
+    animation: sitePerspectivesFlash 1.6s ease;
+}
+
+@keyframes sitePerspectivesFlash {
+    0%   { box-shadow: 0 0 0 3px var( --siteperspectives-color-accent ); }
+    100% { box-shadow: 0px 1px 2px rgba( 16, 24, 40, .08 ); }
+}
+
+/* Utility section */
+
+.siteperspectives-utility {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #d0d5dd;
+}
+
+.siteperspectives-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1d2939;
+}
+
+.siteperspectives-utility .siteperspectives-section-desc {
+    margin-bottom: 14px;
+}
+
+.siteperspectives-empty {
+    padding: 28px;
+    text-align: center;
+    color: #667085;
+    background: #fff;
+    border: 2px dashed var( --siteperspectives-line );
+    border-radius: var( --siteperspectives-radius );
+}
+
+.siteperspectives-empty[hidden] {
+    display: none;
+}
+
+/* Backend tab: folders. Vertical is one full-width column, horizontal is a grid of columns. */
+
+[data-tab="backend"] .siteperspectives-root {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+[data-tab="backend"][data-orientation="horizontal"] .siteperspectives-root {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax( 290px, 1fr ) );
+    align-items: start;
+}
+
+[data-tab="backend"] .siteperspectives-root > .siteperspectives-node {
+    background: #fff;
+    border-radius: var( --siteperspectives-radius );
+    box-shadow: 0px 1px 2px rgba( 16, 24, 40, .1 );
+    padding-bottom: 6px;
+}
+
+[data-tab="backend"] .siteperspectives-root > .siteperspectives-node > .siteperspectives-card {
+    box-shadow: none;
+    border: 0;
+    border-bottom: 1px solid #eaecf0;
+    border-radius: var( --siteperspectives-radius ) var( --siteperspectives-radius ) 0 0;
+    border-left: 4px solid var( --siteperspectives-node-color, var( --siteperspectives-color-accent ) );
+}
+
+[data-tab="backend"] .siteperspectives-root > .siteperspectives-node > .siteperspectives-card .siteperspectives-title {
+    font-size: 15px;
+}
+
+[data-tab="backend"] .siteperspectives-children {
+    margin: 0;
+    padding: 4px 8px 0;
+    border-left: 0;
+    gap: 0;
+}
+
+[data-tab="backend"] .siteperspectives-children > .siteperspectives-node::before {
+    content: none;
+}
+
+[data-tab="backend"] .siteperspectives-children > .siteperspectives-node > .siteperspectives-card {
+    box-shadow: none;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+}
+
+[data-tab="backend"] .siteperspectives-children > .siteperspectives-node > .siteperspectives-card:hover {
+    background: #f6f7f7;
+}
+
+[data-tab="backend"] .siteperspectives-children .siteperspectives-card-main {
+    padding: 6px 8px;
+}
+
+[data-tab="backend"] .siteperspectives-children .siteperspectives-title {
+    font-weight: 500;
+}
+
+[data-tab="backend"] .siteperspectives-children .siteperspectives-children {
+    padding-left: 18px;
+}
+
+[data-tab="backend"] .siteperspectives-expanded {
+    padding: 8px 12px 10px;
+}
+
+/* Icon picker */
+
+.siteperspectives-icon-popover {
+    position: absolute;
+    z-index: 100000;
+    width: 340px;
+    max-width: calc( 100vw - 32px );
+    background: #fff;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba( 16, 24, 40, .22 );
+    padding: 10px;
+}
+
+.siteperspectives-icon-popover input[type="search"] {
+    width: 100%;
+    margin-bottom: 8px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+.siteperspectives-icon-grid {
+    display: grid;
+    grid-template-columns: repeat( 8, 1fr );
+    gap: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.siteperspectives-icon-grid button {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 5px 0;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.siteperspectives-icon-grid button:hover,
+.siteperspectives-icon-grid button:focus {
+    background: #f2f4f7;
+    border-color: #d0d5dd;
+}
+
+.siteperspectives-icon-grid button.is-selected {
+    background: var( --siteperspectives-color-button );
+    color: var( --siteperspectives-color-button-font );
+}
+
+.siteperspectives-icon-popover-footer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.siteperspectives-icon-popover-footer .siteperspectives-acc-msg {
+    margin: 0;
+}
+
+.siteperspectives-edit-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.siteperspectives-edit-actions[hidden] {
+    display: none;
+}
+
+.siteperspectives-datum {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.siteperspectives-card-text {
+    overflow-wrap: anywhere;
+}
+
+/* Empty drop zones: no branch to nowhere, only a hint while dragging */
+
+.siteperspectives-editing .siteperspectives-children:empty {
+    border-left: 0;
+    margin: 0;
+    padding: 0;
+    min-height: 10px;
+}
+
+.siteperspectives-dragging .siteperspectives-children:empty {
+    min-height: 26px;
+    margin: 6px 0 0 26px;
+    border: 2px dashed var( --siteperspectives-line );
+    border-radius: 6px;
+}
+
+.siteperspectives-home-input {
+    display: none;
+    width: 180px;
+    max-width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #98a2b3;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.siteperspectives-editing .siteperspectives-home-input {
+    display: block;
+}
+
+.siteperspectives-editing .siteperspectives-home-title {
+    display: none;
+}
+
+.siteperspectives-bar,
+.siteperspectives-bar-actions {
+    flex-wrap: nowrap;
+}
+
+#siteperspectives-subheader .siteperspectives-bar {
+    gap: 8px;
+}
+
+#siteperspectives-subheader .siteperspectives-bar .siteperspectives-button {
+    white-space: nowrap;
+}
+
+
+/* Edit fields share one height */
+
+.siteperspectives-edit-field input[type="text"],
+.siteperspectives-edit-field input[type="color"],
+.siteperspectives-edit-fields > .siteperspectives-button,
+.siteperspectives-edit-field .siteperspectives-button {
+    height: 34px !important;
+    min-height: 34px !important;
+    box-sizing: border-box;
+    margin: 0 !important;
+}
+
+.siteperspectives-edit-field input[type="text"] {
+    padding: 0 10px;
+    line-height: 1;
+}
+
+.siteperspectives-edit-fields > .siteperspectives-button,
+.siteperspectives-edit-field .siteperspectives-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px !important;
+    line-height: 1;
+}
+
+.siteperspectives-edit-field input[type="color"] {
+    width: 44px;
+    padding: 3px;
+}
+
+/* Hidden-from-shortcode badge */
+
+.siteperspectives-badge-hidden {
+    display: none;
+    color: #98a2b3;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+}
+
+.siteperspectives-is-hide-public > .siteperspectives-card .siteperspectives-badge-hidden {
+    display: inline-block;
+}
+
+.siteperspectives-collapsed-data .siteperspectives-datum-view {
+    flex: 0 0 100%;
+}
+
+.siteperspectives-datum-view a {
+    color: inherit;
+    text-decoration: underline;
+}

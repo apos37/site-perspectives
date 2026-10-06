@@ -1,0 +1,34 @@
+#siteperspectives-preview {
+    display: block;
+    width: 100%;
+    height: 640px;
+    margin: 0 auto;
+    border: 1px solid #e2e5ea;
+    border-radius: 6px;
+    background: #fff;
+    transition: width 0.2s ease;
+}
+
+.siteperspectives-preview-stage {
+    padding: 16px;
+    background: #f6f7f9;
+    border-radius: 0 0 8px 8px;
+}
+
+.siteperspectives-color-grid .wp-picker-container {
+    display: block;
+}
+
+.siteperspectives-color-grid .wp-picker-container .wp-color-result.button {
+    margin: 0 6px 0 0;
+}
+
+.siteperspectives-color-grid .wp-picker-holder {
+    position: absolute;
+    z-index: 10;
+}
+
+
+#siteperspectives-radius {
+    width: 100%;
+}

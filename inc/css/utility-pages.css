@@ -1,0 +1,13 @@
+/* SITE PERSPECTIVES: Utility column on the Pages list. */
+
+.column-siteperspectives_utility {
+    width: 80px;
+}
+
+.column-siteperspectives_utility .dashicons {
+    color: #00a32a;
+}
+
+.siteperspectives-utility-view .column-siteperspectives_utility {
+    display: none;
+}

@@ -1,0 +1,187 @@
+/* SITE PERSPECTIVES: org chart layout. Shared by the Frontend tab (horizontal view) and the [site_perspectives] shortcode (horizontal layout). */
+
+:is( [data-orientation="horizontal"][data-tab="frontend"], .siteperspectives-layout-horizontal ) .siteperspectives-home {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+    padding: 12px 28px;
+    background: var( --tl-trunk, #1d2327 );
+    color: var( --tl-trunk-text, #fff );
+    border-radius: var( --siteperspectives-radius, 8px );
+    text-decoration: none;
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"], .siteperspectives-layout-horizontal ) .siteperspectives-home::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 3px;
+    height: 32px;
+    margin-left: -1.5px;
+    background: var( --tl-trunk, #1d2327 );
+}
+
+.siteperspectives-home .dashicons {
+    width: 26px;
+    height: 26px;
+    font-size: 26px;
+}
+
+.siteperspectives-home strong,
+.siteperspectives-home small {
+    display: block;
+}
+
+.siteperspectives-home strong {
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.siteperspectives-home small {
+    font-size: 12px;
+}
+
+/* Top level columns */
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax( 220px, 1fr );
+    align-items: start;
+    gap: 28px;
+    position: relative;
+    margin-top: 32px;
+    padding-top: 32px;
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var( --tl-trunk, #1d2327 );
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node:nth-child( 6n+1 ) { --siteperspectives-node-color: #0fc9c9; --siteperspectives-node-text: #000000; }
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node:nth-child( 6n+2 ) { --siteperspectives-node-color: #8fbf3f; --siteperspectives-node-text: #000000; }
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node:nth-child( 6n+3 ) { --siteperspectives-node-color: #7b3490; --siteperspectives-node-text: #ffffff; }
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node:nth-child( 6n+4 ) { --siteperspectives-node-color: #f0a020; --siteperspectives-node-text: #000000; }
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node:nth-child( 6n+5 ) { --siteperspectives-node-color: #e31c3d; --siteperspectives-node-text: #ffffff; }
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node:nth-child( 6n+6 ) { --siteperspectives-node-color: #0a9a7f; --siteperspectives-node-text: #000000; }
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node::before {
+    content: "";
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    width: 3px;
+    height: 32px;
+    margin-left: -1.5px;
+    background: var( --siteperspectives-node-color, #0783be );
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node > .siteperspectives-card {
+    background: var( --siteperspectives-node-color, #0783be );
+    border: 0;
+    border-radius: var( --siteperspectives-radius, 8px );
+    color: var( --siteperspectives-node-text, #fff );
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node > .siteperspectives-card :is( .siteperspectives-title, .siteperspectives-node-icon, .siteperspectives-toggle, .siteperspectives-handle, .siteperspectives-collapsed-data, .siteperspectives-datum ) {
+    color: var( --siteperspectives-node-text, #fff );
+    opacity: 1;
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node > .siteperspectives-card .siteperspectives-expanded {
+    background: #fff;
+    color: #1d2939;
+    border-radius: 0 0 var( --siteperspectives-radius, 8px ) var( --siteperspectives-radius, 8px );
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node > .siteperspectives-card .siteperspectives-expanded :is( .siteperspectives-title, .siteperspectives-datum, .siteperspectives-datum-label, .siteperspectives-datum-value ) {
+    color: inherit;
+}
+
+/* Branches: a colored rail with a tick into each child */
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) .siteperspectives-children {
+    margin: 0 0 0 22px;
+    padding: 14px 0 0 22px;
+    gap: 10px;
+    border-left: 3px solid var( --siteperspectives-node-color, #0783be );
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) .siteperspectives-children > .siteperspectives-node::before {
+    left: -22px;
+    top: 22px;
+    width: 22px;
+    border-top: 3px solid var( --siteperspectives-node-color, #0783be );
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) .siteperspectives-children > .siteperspectives-node > .siteperspectives-card {
+    border: 1px solid #d0d5dd;
+    border-radius: var( --siteperspectives-radius, 8px );
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) .siteperspectives-children .siteperspectives-children {
+    margin-left: 14px;
+    padding-left: 16px;
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) .siteperspectives-children .siteperspectives-children > .siteperspectives-node::before {
+    left: -16px;
+    width: 16px;
+}
+
+/* Utility pages as a footer panel */
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-utility, .siteperspectives-layout-horizontal .siteperspectives-sc-utility ) {
+    padding: 18px 22px 22px;
+    background: #f7f5f6;
+    border: 1px solid #e4e7ec;
+    border-radius: 18px;
+    text-align: center;
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-utility, .siteperspectives-layout-horizontal .siteperspectives-sc-utility ) .siteperspectives-root {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax( 220px, 1fr ) );
+    align-items: start;
+    gap: 12px;
+    text-align: left;
+}
+
+@media ( max-width: 520px ) {
+    :is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    :is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root::before,
+    :is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) > .siteperspectives-root > .siteperspectives-node::before,
+    :is( [data-orientation="horizontal"][data-tab="frontend"], .siteperspectives-layout-horizontal ) .siteperspectives-home::after {
+        content: none;
+    }
+
+    :is( [data-orientation="horizontal"][data-tab="frontend"], .siteperspectives-layout-horizontal ) .siteperspectives-home {
+        margin-bottom: 16px;
+    }
+}
+
+:is( [data-orientation="horizontal"][data-tab="frontend"] .siteperspectives-main, .siteperspectives-layout-horizontal ) .siteperspectives-children:empty {
+    margin: 0;
+    padding: 0;
+    border-left: 0;
+}
+
+.siteperspectives-layout-horizontal > .siteperspectives-root > .siteperspectives-node > .siteperspectives-card:hover {
+    filter: brightness( 0.9 );
+}
