@@ -45,6 +45,22 @@ On the Frontend tab, click Edit, open the item and check "Hide from Shortcode". 
 
 Turn on "Enable Utility Page Flags" in Settings. Then use Quick Edit or the "Mark as Utility" bulk action on the Pages list, and filter with the Utility and Non-Utility views. The last view you used is remembered.
 
+== Demo ==
+
+https://youtu.be/gg5kYC8SHxA
+
+== Screenshots ==
+
+1. Backend tab in list view
+2. Backend tab in horizontal view
+3. Frontend tab in list view with display options expanded
+4. Frontend tab in horizontal view
+5. Shortcode tab showing all settings and vertical tree layout
+6. Shortcode tab showing horizontal tree layout
+7. Shortcode tab showing card grid layout
+8. Shortcode being used on a frontend page
+9. Settings page
+
 == Changelog ==
 
 = 1.0.3 =
